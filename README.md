@@ -1,2 +1,493 @@
 # Portf-liocurricolo
 Created with CodeSandbox
+  <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio Pessoal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #31ff03;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            --text-color: #343a40;
+            --light-gray: #e9ecef;
+            --dark-blue: #0ef9ca;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--dark-blue);
+            padding: 0.7rem 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--light-gray);
+        }
+
+        /* Sections */
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .about-content img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-content p {
+            max-width: 800px;
+            font-size: 1.1rem;
+            color: var(--text-color);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .skill-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-item h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-top: 10px;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .project-info a {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-info a:hover {
+            background-color: var(--dark-blue);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--dark-blue);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        footer .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-content img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .about-content p {
+                font-size: 1rem;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card img {
+                height: 180px;
+            }
+
+            .contact-form {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            section h2 {
+                font-size: 1.6rem;
+            }
+
+            .about-content img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .about-content p {
+                font-size: 0.9rem;
+            }
+
+            .skill-item h3 {
+                font-size: 1.1rem;
+            }
+
+            .project-info h3 {
+                font-size: 1.3rem;
+            }
+
+            .project-info p {
+                font-size: 0.9rem;
+            }
+
+            .contact-form button {
+                font-size: 1rem;
+                padding: 10px 15px;
+            }
+
+            footer .social-links a {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Fabricio de jesus correa Junior</h1>
+            <p>Desenvolvedor Web | Funcitonal Analist</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#sobre">Sobre Mim</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="sobre" class="container">
+            <h2>Sobre Mim</h2>
+            <div class="about-content">
+                <img src="https://photos.fife.usercontent.google.com/pw/AP1GczOkV_OLDGomKT9vqS8ab83wGQwr-3p3QGNO1AxhdnSuPT7eYtFCWJoJ=w491-h873-s-no-gm?authuser=0" alt="Foto de Perfil">
+                <p>
+                    Olá! Sou Fabricio, um estudante de desenvolvimento web apaixonado por criar soluções inovadoras e eficientes. 
+                    busco constantemente aprender e aplicar as melhores práticas para construir aplicações robustas e intuitivas.
+                    Ainda não comecei uma Jornada, mas estou disposto a começar! 
+                    
+                </p>
+            </div>
+        </section>
+
+        <section id="habilidades" class="container">
+            <h2>Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3>HTML5</h3>
+                    <p>Estruturação semântica de páginas web.</p>
+                </div>
+                <div class="skill-item">
+                    <h3>CSS3</h3>
+                    <p>Estilização e responsividade com Flexbox e Grid.</p>
+                </div>
+                <div class="skill-item">
+                    <h3>JavaScript</h3>
+                    <p>Lógica de programação e interatividade.</p>
+                </div>
+                <div class="skill-item">
+                    <h3>ReactJS</h3>
+                    <p>Desenvolvimento de interfaces de usuário reativas.</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Java/h3>
+                    <p>Programação de Back-end</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Facilidade de Aprendizado</h3>
+                    <p>Gosto de colocar a mão na massa e aprender fazendo.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos" class="container">
+            <h2>Meus Projetos</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x200" alt="Projeto 1">
+                    <div class="project-info">
+                        <h3>Projeto Sistema Bilioteca</h3>
+                        <p>Foi criado um Back end para administrar um Biblioteca, com entradas e saidas de livros.</p>
+                        <a href="#" target="_blank">Ver Projeto</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x200" alt="Projeto 2">
+                    <div class="project-info">
+                        <h3>Gerenciamento de Empresa</h3>
+                        <p>Outro projeto interessante, destacando suas funcionalidades e o aprendizado obtido. Ex: Eu virei um Gp e Comandei uma empresa que estava falindo com seus Produtos.</p>
+                        <a href="#" target="_blank">Ver Projeto</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x200" alt="Projeto 3">
+                    <div class="project-info">
+                        <h3>Pitch para venda de um Site</h3>
+                        <p>Um terceiro projeto para demonstrar sua versatilidade. Ex: Precisei convercer um Bilionario a comprar meu site para ajudar suas empresas.</p>
+                        <a href="#" target="_blank">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="container">
+            <h2>Contato</h2>
+            <form class="contact-form">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" required>
